@@ -12,12 +12,12 @@ function runIt(Closure $closure, string $title): void
         }
         $times[] = (microtime(true) - $time1) * 1000;
     }
-
-    printf("=== %s\n", $title);
-    printf("avg: %8.2f msec\n", array_sum($times) / 100);
-    printf("med: %8.2f msec\n", median($times));
-    printf("min: %8.2f msec\n", min($times));
-    printf("max: %8.2f msec\n", max($times));
+    printf("%s,", phpversion());
+    printf("'%s',", $title);
+    printf("%8.2f,", array_sum($times) / 100);
+    printf("%8.2f,", median($times));
+    printf("%8.2f,", min($times));
+    printf("%8.2f\n", max($times));
 }
 
 function median(array $times)
