@@ -7,12 +7,13 @@ function runIt(Closure $closure, string $title): void
     }
     for ($i = 0; $i < 100; $i++) {
         $time1 = microtime(true);
-        for($j = 0; $j < 10000; $j++) {
+        for($j = 0; $j < 1000000; $j++) {
             $s = $closure();
         }
         $times[] = (microtime(true) - $time1) * 1000;
     }
     printf("%s,", phpversion());
+    printf("%s,", (int)(bool)ini_get('opcache.jit'));
     printf("'%s',", $title);
     printf("%8.2f,", array_sum($times) / 100);
     printf("%8.2f,", median($times));
